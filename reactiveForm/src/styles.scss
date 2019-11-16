@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    font-size: 1rem;
+
+    .shadow{
+        box-shadow: 1px 1px 4px lightgray;
+        padding: .75em;
+        margin: .75em 0;
+         &:hover{
+            box-shadow: 1px 1px 4px #000;
+         }
+    }
+    
+    .button{
+        padding: 1em 0.75em;
+        outline: none;
+        border-radius: 0.41em;
+        border: none;
+        margin: .75em 0;
+        cursor: pointer;
+    }
+    .green{
+        background: green;
+        color:#fff;
+    }
+    .blue{
+        background: blue;
+        color:#fff;
+    }
+    .red{
+        background: red;
+        color:#fff;
+    }
+    .required{
+        label::after{
+            content: '*';
+            color:red;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.main-block{
+    transition: all 1s linear;
+    .form-container{
+        form{
+            .inner-block{
+                display: flex;
+                flex-wrap: wrap;
+
+                .company-list{
+                    display: flex;
+                    overflow: auto;
+                    .company-list-blk{
+                        display: flex;
+                        overflow: auto;
+                        .inner-block{
+                            max-width: 12em;;
+                        }
+
+                        .btn-blk{
+                            display: flex;
+                            width:100%;
+                            justify-content: space-between;
+                        }
+                     }
+                }
+                
+                
+                .form-control{
+                    margin-right: .5em;
+
+                    label{
+                        display:block;
+                        font-weight:bold;
+                        margin-top: .75em;
+                    }
+
+                }
+            }
+        }
+        .button.green{
+            width:100%;
+        }
+    }
+}

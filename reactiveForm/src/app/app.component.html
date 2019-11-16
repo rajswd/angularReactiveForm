@@ -1,55 +1,95 @@
 <div class="main-block">
-  <div class="form-container">
+  <div class="form-container shadow">
       <form class="row form-group" [formGroup]="formModel" >
-        <div class="row form-control">
+        <div class="inner-block shadow">
+        <div class="row form-control required">
           <label>First Name</label>
           <input type="text"  formControlName="fName" />
         </div>
 
         <div class="row form-control">
-          <label>Last Name</label>
-          <input type="text"  formControlName="fName" />
+          <label>Middle Name</label>
+          <input type="text"  formControlName="mName" />
         </div>
 
-        <div class="row form-control">
+        <div class="row form-control required">
           <label>Last Name</label>
           <input type="text"  formControlName="lName" />
         </div>
         
-        <div class="row form-control">
+        <div class="row form-control required">
           <label>Id Type</label>
           <input type="text"  formControlName="idType" />
         </div>
         
-        <div class="row form-control">
+        <div class="row form-control required">
           <label>Id No.</label>
           <input type="text"  formControlName="id" />
         </div>
+        </div>
 
-        <div class="row form-control" formArrayName="companyList">
-           <button (click)="addcompanyList()">addcompanyList</button>
-          
-            <div *ngFor="let address of companyList.controls; let i=index">
-              <div [formGroupName]="i">
-                <div class="row form-control">
-                  <label>Company Name</label>
-                  <input type="text"  formControlName="cName"/>
+        <div class="inner-block shadow"> 
+          <div class="row form-control company-list" formArrayName="companyList">
+            <button (click)="addcompanyList()" class="button blue">Add Company List</button>
+            <div class="company-list-blk"> 
+              <div *ngFor="let address of companyList.controls; let i=index">
+                <div class="inner-block shadow" [formGroupName]="i">
+                  <div class="row form-control required">
+                    <label>Company Name</label>
+                    <input type="text"  formControlName="cName"/>
+                  </div> 
+                  <div class="row form-control">
+                    <label>Location</label>
+                    <input type="text"  formControlName="wLocation" />
+                  </div>
+                  <div class="row form-control required">
+                    <label>No of Months</label>
+                    <input type="text"  formControlName="tDuration" />
+                  </div>
+
+                  <div class="row form-control btn-blk">
+                      <button (click)="delItem(i)" class="button red">Delete</button>
+                      <button (click)="reset(i)" class="button blue">Reset</button>
+                    </div>
                 </div> 
-                <div class="row form-control">
-                  <label>Work Location</label>
-                  <input type="text"  formControlName="wLocation" />
+              </div>
                 </div>
               </div>
-            </div>
-          </div>
-        
-     
+            </div>     
       </form>
-      <button (click)="addToDataList()">Ao To Data List</button>
+      <button (click)="addToDataList()"  class="button green">Ao To Data List</button>
 
   </div>
 
   <div class="view-container">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Name </td>
+          <td>ID Type </td>
+          <td>ID No</td>
+          <td>Work History </td>
+          </tr>
+      </thead>
+
+      <tbody>
+        <tr class="tr" *ngFor="let lItem of dataModel">
+          <td>{{getName(lItem)}}</td>
+          <td>{{lItem.idType}}</td>
+          <td>{{lItem.id}}</td>
+          <table>
+            <tbody>
+              <tr *ngFor="let item of lItem.companyList">
+                  <td>{{item.cName}}</td>
+              <td>{{item.wLocation}}</td>
+              <td>{{item.tDuration}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
 </div>
