@@ -1,0 +1,55 @@
+<div class="main-block">
+  <div class="form-container">
+      <form class="row form-group" [formGroup]="formModel" >
+        <div class="row form-control">
+          <label>First Name</label>
+          <input type="text"  formControlName="fName" />
+        </div>
+
+        <div class="row form-control">
+          <label>Last Name</label>
+          <input type="text"  formControlName="fName" />
+        </div>
+
+        <div class="row form-control">
+          <label>Last Name</label>
+          <input type="text"  formControlName="lName" />
+        </div>
+        
+        <div class="row form-control">
+          <label>Id Type</label>
+          <input type="text"  formControlName="idType" />
+        </div>
+        
+        <div class="row form-control">
+          <label>Id No.</label>
+          <input type="text"  formControlName="id" />
+        </div>
+
+        <div class="row form-control" formArrayName="companyList">
+           <button (click)="addcompanyList()">addcompanyList</button>
+          
+            <div *ngFor="let address of companyList.controls; let i=index">
+              <div [formGroupName]="i">
+                <div class="row form-control">
+                  <label>Company Name</label>
+                  <input type="text"  formControlName="cName"/>
+                </div> 
+                <div class="row form-control">
+                  <label>Work Location</label>
+                  <input type="text"  formControlName="wLocation" />
+                </div>
+              </div>
+            </div>
+          </div>
+        
+     
+      </form>
+      <button (click)="addToDataList()">Ao To Data List</button>
+
+  </div>
+
+  <div class="view-container">
+
+  </div>
+</div>
